@@ -39,9 +39,7 @@ function initialPrompt() {
    console.log(`Your word:${userInput}\n${score}`);
 }
 
-
-
-let simpleScorer;
+let simpleScorer = Object.points(word)
 
 let vowelBonusScorer;
 
