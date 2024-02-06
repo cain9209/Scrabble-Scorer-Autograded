@@ -75,20 +75,20 @@ return points;
 
 const scoringAlgorithms = [
    {
-   name: 'simpleScorer',
-   description: '0 - Simple: One point per character',
-   scoringFunction: simpleScorer
+   "name": 'Simple Scorer',
+   "description": '0 - Simple: One point per character',
+   "scoringFunction": [simpleScorer],
    },
    {
-      name: 'Bonous Vowels',
-      description: '1 - Vowel Bonus: Vowels are worth 3 points',
-      scoringFunction: vowelBonusScorer
+      "name": 'Bonous Vowels',
+      "description": '1 - Vowel Bonus: Vowels are worth 3 points',
+      "scoringFunction": [vowelBonusScorer],
    },
    {
-      name: 'Scrabble Scorer' ,
-      description: '2 - Scrabble: Uses scrabble point system',
-      scoringFunction: oldScrabbleScorer
-    },
+      "name": 'Scrabble-Scorer' ,
+      "description": '2 - Scrabble: Uses scrabble point system',
+      "scoringFunction": [oldScrabbleScorer],
+   }
 ];
 
 function scorerPrompt() {
@@ -120,7 +120,9 @@ function scorerPrompt() {
   
 
 
-function transform(oldPointStructure) {};
+function transform() {
+   let newPointStructure = oldPointStructure[i]
+};
 
 let newPointStructure;
 
