@@ -41,7 +41,7 @@ function initialPrompt() {
 
 function simpleScorer(word){
 let lowerCaseWord = word.toLowerCase();
-let lettersArray = lowerCaseWord.split(',');
+let lettersArray = lowerCaseWord.split('');
 let wordScore = 0;
 for(i=0;i< lettersArray.length;i++){
    wordScore = wordScore + 1;
