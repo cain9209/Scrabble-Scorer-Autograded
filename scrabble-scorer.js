@@ -50,13 +50,14 @@ return wordScore;
 }
 
 function vowelBonusScorer(word){
-const vowels = ('A','E','I,','O','U')
-const wordScore = 0;
-for(let i = 0;i<word.length;i++){
-   if (vowels.includes(word[i].toUpperCase())) {
-      wordScore += 3;
-    } else {
-      wordScore += 1;
+let lowerCaseWord = word.toLowerCase();
+let lettersArray = lowerCaseWord.split('');
+let wordScore = 0;
+for(i = 0;i<word.length;i++){
+if (['a','e','i','o','u'].includes(lettersArray[i])) {
+   wordScore += 3;
+} else {
+   wordScore++;
     }
   }
   return wordScore;
