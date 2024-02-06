@@ -35,8 +35,8 @@ function oldScrabbleScorer(word) {
 function initialPrompt() {
    console.log("Let's play some scrabble! Enter a word:");
    const userInput = input.question("Enter a word to score!:");
-   const score = oldScrabbleScorer(userInput);
-   console.log(`Your word:${userInput}\n${score}`);
+   //const score = oldScrabbleScorer(userInput);
+   //console.log(`Your word:${userInput}\n${score}`);
 }
 
 function simpleScorer(word){
@@ -79,26 +79,26 @@ return points;
 const scoringAlgorithms = [
    {
    name: 'simpleScorer',
-   description: 'Each letter is worth one point',
+   description: '0 - Simple: One point per character',
    scoringFunction: simpleScorer
    },
    {
       name: 'Bonous Vowels',
-      description: 'Vowels are 3 points, Constinents are 1 point',
+      description: '1 - Vowel Bonus: Vowels are worth 3 points',
       scoringFunction: vowelBonusScorer
    },
    {
       name: 'Scrabble Scorer' ,
-      descritption: 'Scrabble the Traditional scoring algorythem',
+      descritption: '2 - Scrabble: Uses scrabble point system',
       scoringFunction: scrabbleScorer
    }
 ];
 
 function scorerPrompt() {
+   console.log("Which Scoreing Algorythem would you like to use to play Scrabble?:\n");
    for(i=0;i<scoringAlgorithms.length;i++){
-   console.log("Which Scoreing Algorythem would you like to use?\n:");
    }
-   const userSelection = input.question("Select an Algorythem to Score:0,1,2")
+   const userSelection = input.question("Enter 0, 1, or 2:  ")
 
     if (userSelection === 0)
       {
@@ -115,13 +115,9 @@ function scorerPrompt() {
       console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
       console.log("scoringFunction result:"), (scoringAlgorithms[2].name)
       }
-      else 
-      {
-      console.log('Please choose a number between 0 - 2')
-      }
    return scorerPrompt;
    }
-  scorerPrompt();
+  
 
 
 function transform(oldPointStructure) {};
@@ -130,7 +126,7 @@ let newPointStructure;
 
 function runProgram() {
    initialPrompt();
-   
+   scorerPrompt();
 }
 
 // Don't write any code below this line //
