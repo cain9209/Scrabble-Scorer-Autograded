@@ -49,6 +49,7 @@ for(i=0;i< lettersArray.length;i++){
 return wordScore;
 }
 
+
 function vowelBonusScorer(word){
 let lowerCaseWord = word.toLowerCase();
 let lettersArray = lowerCaseWord.split('');
@@ -63,13 +64,16 @@ if (['a','e','i','o','u'].includes(lettersArray[i])) {
   return wordScore;
 }
 
+
 function scrabbleScorer(word){
-let lowerCaseWord = word.length();
+let lowerCaseWord = word.toLowerCase();
 let lettersArray = lowerCaseWord.split(',');
 const points = oldScrabbleScorer(lettersArray);
 
 return points;
 }
+
+
 
 
 const scoringAlgorithms = [
@@ -84,24 +88,43 @@ const scoringAlgorithms = [
       scoringFunction: vowelBonusScorer
    },
    {
-      name: 'Scrabble' ,
+      name: 'Scrabble Scorer' ,
       descritption: 'Scrabble the Traditional scoring algorythem',
       scoringFunction: scrabbleScorer
    }
 ];
 
 function scorerPrompt() {
-   console.log("Which Scoreing Algorythem would you like to use?\n:");
    for(i=0;i<scoringAlgorithms.length;i++){
-      console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
+   console.log("Which Scoreing Algorythem would you like to use?\n:");
    }
-   const selectedAlgorithmIndex = input.question('Enter 0, 1, or 2: ');
+   const userSelection = input.question("Select an Algorythem to Score:0,1,2")
 
-  return scoringAlgorithms[selectedAlgorithmIndex];
-}
+    if (userSelection === 0)
+      {
+      console.log("simpleScorer: "), (scoringAlgorithms[0].name)
+      console.log("scoringFunction result: "), (scoringAlgorithms[0].scoringFunction(word))
+      } 
+      else if (userSelection === 1)
+      {
+      console.log("Bonous Vowels: "), (scoringAlgorithms[1].name)
+      console.log("scoringFunction result:"), (scoringAlgorithms[1].name)
+      }
+      else if (userSelection ===2)
+      {
+      console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
+      console.log("scoringFunction result:"), (scoringAlgorithms[2].name)
+      }
+      else 
+      {
+      console.log('Please choose a number between 0 - 2')
+      }
+   return scorerPrompt;
+   }
+  scorerPrompt();
 
 
-function transform() {};
+function transform(oldPointStructure) {};
 
 let newPointStructure;
 
