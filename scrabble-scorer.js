@@ -35,8 +35,8 @@ function oldScrabbleScorer(word) {
 function initialPrompt() {
    console.log("Let's play some scrabble! Enter a word:");
    const userInput = input.question("Enter a word to score!:");
-   //const score = oldScrabbleScorer(userInput);
-   //console.log(`Your word:${userInput}\n${score}`);
+   const score = oldScrabbleScorer(userInput);
+   console.log(`Your word:${userInput}\n${score}`);
 }
 
 function simpleScorer(word){
@@ -73,9 +73,6 @@ const points = oldScrabbleScorer(lettersArray);
 return points;
 }
 
-
-
-
 const scoringAlgorithms = [
    {
    name: 'simpleScorer',
@@ -89,31 +86,34 @@ const scoringAlgorithms = [
    },
    {
       name: 'Scrabble Scorer' ,
-      descritption: '2 - Scrabble: Uses scrabble point system',
-      scoringFunction: scrabbleScorer
-   }
+      description: '2 - Scrabble: Uses scrabble point system',
+      scoringFunction: oldScrabbleScorer
+    },
 ];
 
 function scorerPrompt() {
    console.log("Which Scoreing Algorythem would you like to use to play Scrabble?:\n");
    for(i=0;i<scoringAlgorithms.length;i++){
    }
+   console.log(`${scoringAlgorithms[0].description}`)
+   console.log(`${scoringAlgorithms[1].description}`)
+   console.log(`${scoringAlgorithms[2].description}`)
    const userSelection = input.question("Enter 0, 1, or 2:  ")
 
     if (userSelection === 0)
       {
       console.log("simpleScorer: "), (scoringAlgorithms[0].name)
-      console.log("scoringFunction result: "), (scoringAlgorithms[0].scoringFunction(word))
+      console.log("scoringFunction result: "), (scoringAlgorithms[0].description)
       } 
       else if (userSelection === 1)
       {
       console.log("Bonous Vowels: "), (scoringAlgorithms[1].name)
-      console.log("scoringFunction result:"), (scoringAlgorithms[1].name)
+      console.log("scoringFunction result:"), (scoringAlgorithms[1].description)
       }
       else if (userSelection ===2)
       {
       console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
-      console.log("scoringFunction result:"), (scoringAlgorithms[2].name)
+      console.log("scoringFunction result:"), (scoringAlgorithms[2].description)
       }
    return scorerPrompt;
    }
