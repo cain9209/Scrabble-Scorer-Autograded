@@ -117,7 +117,6 @@ let newPointStructure;
 
 function runProgram() {
    initialPrompt();
-   scorerPrompt();
 }
 
 // Don't write any code below this line //
