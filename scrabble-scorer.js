@@ -93,32 +93,19 @@ const scoringAlgorithms = [
 
 function scorerPrompt() {
    console.log("Which Scoreing Algorythem would you like to use to play Scrabble?:\n");
-   for(i=0;i<scoringAlgorithms.length;i++){
+   for (let i = 0; i < scoringAlgorithms.length; i++) {
+      console.log(`${scoringAlgorithms[i].description}`);
    }
-   console.log(`${scoringAlgorithms[0].description}`)
-   console.log(`${scoringAlgorithms[1].description}`)
-   console.log(`${scoringAlgorithms[2].description}`)
-   const userSelection = input.question("Enter 0, 1, or 2:  ") // need to push input to array//
+   const userSelection = input.question("Enter 0, 1, or 2: "); // need to push input to array//
    const selectionArray = [];
-   selectionArray.push(userSelection)
-   console.log(`You have selected ${selectionArray}`)
-    if (selectionArray === 0)
-      {
-      console.log("simpleScorer: "), (scoringAlgorithms[0].name)
-      console.log("scoringFunction result: "), (scoringAlgorithms[0].description)
-      } 
-      else if (selectionArray === 1)
-      {
-      console.log("Bonous Vowels: "), (scoringAlgorithms[1].name)
-      console.log("scoringFunction result:"), (scoringAlgorithms[1].description)
-      }
-      else if (selectionArray ===2)
-      {
-      console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
-      console.log("scoringFunction result:"), (scoringAlgorithms[2].description)
-      }
-   return scorerPrompt;
-   }
+   selectionArray.push(userSelection);
+   console.log(`You have selected ${selectionArray}`);
+
+   return scoringAlgorithms[userSelection]; // Return the selected scoring algorithm
+}
+
+const selectedAlgorithm = scorerPrompt();
+console.log(`You can now use the selected algorithm: ${selectedAlgorithm.name}`);
   
 
 
