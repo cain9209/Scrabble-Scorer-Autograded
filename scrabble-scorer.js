@@ -98,19 +98,21 @@ function scorerPrompt() {
    console.log(`${scoringAlgorithms[0].description}`)
    console.log(`${scoringAlgorithms[1].description}`)
    console.log(`${scoringAlgorithms[2].description}`)
-   const userSelection = input.question("Enter 0, 1, or 2:  ")
-
-    if (userSelection === 0)
+   const userSelection = input.question("Enter 0, 1, or 2:  ") // need to push input to array//
+   const selectionArray = [];
+   selectionArray.push(userSelection)
+   console.log(`You have selected ${selectionArray}`)
+    if (selectionArray === 0)
       {
       console.log("simpleScorer: "), (scoringAlgorithms[0].name)
       console.log("scoringFunction result: "), (scoringAlgorithms[0].description)
       } 
-      else if (userSelection === 1)
+      else if (selectionArray === 1)
       {
       console.log("Bonous Vowels: "), (scoringAlgorithms[1].name)
       console.log("scoringFunction result:"), (scoringAlgorithms[1].description)
       }
-      else if (userSelection ===2)
+      else if (selectionArray ===2)
       {
       console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
       console.log("scoringFunction result:"), (scoringAlgorithms[2].description)
