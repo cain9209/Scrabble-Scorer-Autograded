@@ -40,19 +40,21 @@ function initialPrompt() {
 }
 
 function simpleScorer(word){
+let lettersArray = [];
 let capitolWord = word.toUpperCase();
-let lettersArray = capitolWord.split('');
-let wordScore = 0;
+lettersArray.push = (capitolWord.split(''));
+let score = 0;
 for(i=0;i< lettersArray.length;i++){
-   wordScore = wordScore + 1;
+   score = score + 1;
 }
-return wordScore;
+return score;
 }
 
 
 function vowelBonusScorer(word){
+let lettersArray = [];
 let capitolWord = word.toUpperCase();
-let lettersArray = capitolWord.split('');
+lettersArray.push = capitolWord.split('');
 let wordScore = 0;
 for(i = 0;i<word.length;i++){
 if (['a','e','i','o','u'].includes(lettersArray[i])) {
@@ -66,8 +68,9 @@ if (['a','e','i','o','u'].includes(lettersArray[i])) {
 
 
 function scrabbleScorer(word){
+let lettersArray = [];
 let capitolWord = word.toUpperCase();
-let lettersArray = capitolWord.split(',');
+lettersArray.push = capitolWord.split('');
 const points = oldScrabbleScorer(lettersArray);
 
 return points;
