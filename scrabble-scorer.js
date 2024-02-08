@@ -82,7 +82,7 @@ let scoringAlgorithms = [
     }
 ];
 
-   function scorerPrompt() {
+   scorerPrompt = () => {
    console.log("Which Scoreing Algorythem would you like to use?:\n");
    for (let i = 0; i < scoringAlgorithms.length; i++) {
       console.log(`${scoringAlgorithms[i].description}`);
@@ -95,7 +95,7 @@ let scoringAlgorithms = [
    return scoringAlgorithms[userSelection]; // Return the selected scoring algorithm
 }
 
- transform = function(oldPointStructure) {
+ transform = (oldPointStructure) => {
  const newPointStructure = {};
  for (key in oldPointStructure){
    keyArray = oldPointStructure[key];
