@@ -38,61 +38,55 @@ function initialPrompt() {
    const score = oldScrabbleScorer(userInput);
    console.log(`Your word:${userInput}\n${score}`);
 }
+   simpleScorer = (word) => {
+   let score = 0
+   word = word.toLowerCase();
+   for (let i = 0; i < word.length; i++) { 
+      score += 1;
+   }
+   return score;
+};
 
-function simpleScorer(word){
-let lettersArray = [];
-let capitolWord = word.toUpperCase();
-lettersArray.push = (capitolWord.split(''));
-let score = 0;
-for(i=0;i< lettersArray.length;i++){
-   score = score + 1;
-}
-return score;
-}
-
-
-function vowelBonusScorer(word){
-let lettersArray = [];
-let capitolWord = word.toUpperCase();
-lettersArray.push = capitolWord.split('');
-let wordScore = 0;
-for(i = 0;i<word.length;i++){
-if (['a','e','i','o','u'].includes(lettersArray[i])) {
-   wordScore += 3;
-} else {
-   wordScore++;
-    }
+   vowelBonusScorer = (word) => {
+   const vowels = ["a", "e", "i", "o", "u"];
+   score = 0;
+   word = word.toLowerCase();
+   for (let i = 0; i < word.length; i++) {
+      score += vowels.includes(word[i]) ? 3 : 1;
+   }
+   return score;    
+ };
+  scrabbleScorer = (word) => {
+  word = word.toLowerCase();
+  for (let i = 0; i < word.length; i++) {
+   score += oldPointStructure[word[i]] || 0;
   }
-  return wordScore;
-}
-
-
-function scrabbleScorer(word){
-let lettersArray = [];
-let capitolWord = word.toUpperCase();
-lettersArray.push = capitolWord.split('');
-const points = oldScrabbleScorer(lettersArray);
-
-return points;
-}
+  return score;
+ };
 
 let scoringAlgorithms = [
-   {
-      name: ['Simple Scorer'],
-      description: ['0 - Simple: One point per character'],
-      scoringFunction: [simpleScorer],
-   },
-   {
-      name: ['Bonous Vowels'],
-      description: ['1 - Vowel Bonus: Vowels are worth 3 points'],
-      scoringFunction: [vowelBonusScorer],
-   },
-   {
-      name: ['Scrabble-Scorer'] ,
-      description: ['2 - Scrabble: Uses scrabble point system'],
-      scoringFunction: [oldScrabbleScorer],
+   
+         simple = {
+         name: "simpleScorer",
+         description: 'Each letter is worth 1 point.',
+         scoringFunction: 'simpleScorer'
    }
-];
+   
+      bonous = {
+      name: 'Bonous Vowels',
+      description: '1 - Vowel Bonus: Vowels are worth 3 points',
+      scoringFunction: 'vowelBonusScorer',
+   }
+   
+       scrabble = {
+      name: 'Scrabble-Scorer' ,
+      description: '2 - Scrabble: Uses scrabble point system',
+      scoringFunction: 'oldScrabbleScorer',
+   }
+   console.log("algorithm name: ", scoringAlgorithms[0].name);
+   console.log("scoringFunction result: ", scoringAlgorithms[0].scoringFunction("JavaScript"));
+}
+]
 
 function scorerPrompt() {
    console.log("Which Scoreing Algorythem would you like to use?:\n");
