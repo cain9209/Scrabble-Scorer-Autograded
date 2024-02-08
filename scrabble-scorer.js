@@ -80,9 +80,9 @@ let scoringAlgorithms = [
       description: '2 - Scrabble: Uses scrabble point system',
       scoringFunction: oldScrabbleScorer
     }
-]
+];
 
-function scorerPrompt() {
+   function scorerPrompt() {
    console.log("Which Scoreing Algorythem would you like to use?:\n");
    for (let i = 0; i < scoringAlgorithms.length; i++) {
       console.log(`${scoringAlgorithms[i].description}`);
@@ -95,7 +95,7 @@ function scorerPrompt() {
    return scoringAlgorithms[userSelection]; // Return the selected scoring algorithm
 }
 
-let transform = function(oldPointStructure) {
+ transform = function(oldPointStructure) {
  const newPointStructure = {};
  for (key in oldPointStructure){
    keyArray = oldPointStructure[key];
