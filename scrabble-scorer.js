@@ -40,8 +40,8 @@ function initialPrompt() {
 }
 
 function simpleScorer(word){
-let lowerCaseWord = word.toLowerCase();
-let lettersArray = lowerCaseWord.split('');
+let capitolWord = word.toUpperCase();
+let lettersArray = capitolWord.split('');
 let wordScore = 0;
 for(i=0;i< lettersArray.length;i++){
    wordScore = wordScore + 1;
@@ -51,8 +51,8 @@ return wordScore;
 
 
 function vowelBonusScorer(word){
-let lowerCaseWord = word.toLowerCase();
-let lettersArray = lowerCaseWord.split('');
+let capitolWord = word.toUpperCase();
+let lettersArray = capitolWord.split('');
 let wordScore = 0;
 for(i = 0;i<word.length;i++){
 if (['a','e','i','o','u'].includes(lettersArray[i])) {
@@ -66,8 +66,8 @@ if (['a','e','i','o','u'].includes(lettersArray[i])) {
 
 
 function scrabbleScorer(word){
-let lowerCaseWord = word.toLowerCase();
-let lettersArray = lowerCaseWord.split(',');
+let capitolWord = word.toUpperCase();
+let lettersArray = capitolWord.split(',');
 const points = oldScrabbleScorer(lettersArray);
 
 return points;
@@ -92,7 +92,7 @@ const scoringAlgorithms = [
 ];
 
 function scorerPrompt() {
-   console.log("Which Scoreing Algorythem would you like to use to play Scrabble?:\n");
+   console.log("Which Scoreing Algorythem would you like to use?:\n");
    for (let i = 0; i < scoringAlgorithms.length; i++) {
       console.log(`${scoringAlgorithms[i].description}`);
    }
@@ -104,19 +104,22 @@ function scorerPrompt() {
    return scoringAlgorithms[userSelection]; // Return the selected scoring algorithm
 }
 
-const selectedAlgorithm = scorerPrompt();
-console.log(`You can now use the selected algorithm: ${selectedAlgorithm.name}`);
-  
-
-
-function transform() {
-   let newPointStructure = oldPointStructure[i]
-};
-
-let newPointStructure;
+let transform = function(oldPointStructure) {
+ const newPointStructure = {};
+ for (key in oldPointStructure){
+   keyArray = oldPointStructure[key];
+   for(i=0; i<keyArray.length;i++) {
+      newPointStructure[keyArray[i].toUpperCase()] = Number(key);
+   }
+ }
+ return newPointStructure;
+}
+console.log(transform(oldPointStructure))
+let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
    initialPrompt();
+   scorerPrompt();
 }
 
 // Don't write any code below this line //
