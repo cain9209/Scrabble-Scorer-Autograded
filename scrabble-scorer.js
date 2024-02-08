@@ -65,27 +65,21 @@ function initialPrompt() {
  };
 
 let scoringAlgorithms = [
-   
-         simple = {
-         name: "simpleScorer",
-         description: 'Each letter is worth 1 point.',
-         scoringFunction: 'simpleScorer'
-   }
-   
-      bonous = {
-      name: 'Bonous Vowels',
+   {
+      name: "simpleScorer",
+      description: 'Each letter is worth 1 point.',
+      scoringFunction: simpleScorer
+    },
+    {
+      name: 'Vowel Bonus',
       description: '1 - Vowel Bonus: Vowels are worth 3 points',
-      scoringFunction: 'vowelBonusScorer',
-   }
-   
-       scrabble = {
-      name: 'Scrabble-Scorer' ,
+      scoringFunction: vowelBonusScorer
+    },
+    {
+      name: 'Scrabble Scorer',
       description: '2 - Scrabble: Uses scrabble point system',
-      scoringFunction: 'oldScrabbleScorer',
-   }
-   console.log("algorithm name: ", scoringAlgorithms[0].name);
-   console.log("scoringFunction result: ", scoringAlgorithms[0].scoringFunction("JavaScript"));
-}
+      scoringFunction: oldScrabbleScorer
+    }
 ]
 
 function scorerPrompt() {
