@@ -34,10 +34,10 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    console.log("Let's play some scrabble! Enter a word:");
-   const userInput = input.question("Enter a word to score!:");
-   const score = oldScrabbleScorer(userInput);
-   console.log(`Your word:${userInput}\n${score}`);
-}
+    userInput = input.question("Enter a word to score!:");
+
+};
+
    simpleScorer = (word) => {
    let score = 0
    word = word.toLowerCase();
@@ -100,7 +100,7 @@ const scoringAlgorithms = [
  for (letter in oldPointStructure){
    letterArray = oldPointStructure[letter];
    for(i=0; i<letterArray.length;i++) {
-      newPointStructure[letterArray[i].toUpperCase()] = Number(letter);
+      newPointStructure[letterArray[i].toLowerCase()] = Number(letter);
    }
  }
  return newPointStructure;
