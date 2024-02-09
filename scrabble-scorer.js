@@ -56,14 +56,11 @@ function initialPrompt() {
    }
    return score;    
  };
-  scrabbleScorer = (word) => {
-   let score = 0;
-  word = word.toLowerCase();
-  for (let i = 0; i < word.length; i++) {
-   score += oldPointStructure[word[i]] || 0;
-  }
-  return score;
- };
+ const scrabbleScorer = word =>
+ word
+   .split('')
+   .map(letter => newPointStructure[letter])
+   .reduce((a, b) => a + b);
 
 const scoringAlgorithms = [
    {
