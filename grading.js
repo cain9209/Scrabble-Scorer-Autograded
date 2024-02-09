@@ -1,4 +1,5 @@
 const input = require("readline-sync");
+const scrabbleScorer = require("./scrabble-scorer");
 
 const oldPointStructure = {
   1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
@@ -10,15 +11,3 @@ const oldPointStructure = {
   10: ['Q', 'Z']
 };
 
-transform = (oldPointStructure) => {
-    const newPointStructure = {};
-    for (letter in oldPointStructure){
-      letterArray = oldPointStructure[letter];
-      for(i=0; i<letterArray.length;i++) {
-         newPointStructure[letterArray[i].toUpperCase()] = Number(letter);
-      }
-    }
-    return newPointStructure;
-   }
-    let newPointStructure = transform(oldPointStructure);
-    console.log(newPointStructure);

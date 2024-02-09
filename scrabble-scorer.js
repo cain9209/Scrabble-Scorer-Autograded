@@ -57,6 +57,7 @@ function initialPrompt() {
    return score;    
  };
   scrabbleScorer = (word) => {
+   let score = 0;
   word = word.toLowerCase();
   for (let i = 0; i < word.length; i++) {
    score += oldPointStructure[word[i]] || 0;
@@ -111,7 +112,7 @@ function runProgram() {
    initialPrompt();
    scorerPrompt();
 }
-
+runProgram();
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
 module.exports = {
