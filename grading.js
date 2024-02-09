@@ -1,17 +1,24 @@
-if (userSelection === 0)
-{
-console.log("simpleScorer: "), (scoringAlgorithms[0].name)
-console.log("scoringFunction result: "), (scoringAlgorithms[0].scoringFunction())
-} 
-else if (userSelection === 1)
-{
-console.log("Bonous Vowels: "), (scoringAlgorithms[1].name)
-console.log("scoringFunction result:"), (scoringAlgorithms[1].scoringFunction())
-}
-else if (userSelection ===2)
-{
-console.log("Scrabble Scorer: "), (scoringAlgorithms[2].name)
-console.log("scoringFunction result:"), (scoringAlgorithms[2].scoringFunction())
-}
-return scorerPrompt;
-}
+const input = require("readline-sync");
+
+const oldPointStructure = {
+  1: ['A', 'E', 'I', 'O', 'U', 'L', 'N', 'R', 'S', 'T'],
+  2: ['D', 'G'],
+  3: ['B', 'C', 'M', 'P'],
+  4: ['F', 'H', 'V', 'W', 'Y'],
+  5: ['K'],
+  8: ['J', 'X'],
+  10: ['Q', 'Z']
+};
+
+transform = (oldPointStructure) => {
+    const newPointStructure = {};
+    for (letter in oldPointStructure){
+      letterArray = oldPointStructure[letter];
+      for(i=0; i<letterArray.length;i++) {
+         newPointStructure[letterArray[i].toUpperCase()] = Number(letter);
+      }
+    }
+    return newPointStructure;
+   }
+    let newPointStructure = transform(oldPointStructure);
+    console.log(newPointStructure);
