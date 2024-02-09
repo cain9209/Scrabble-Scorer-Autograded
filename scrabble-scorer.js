@@ -64,21 +64,21 @@ function initialPrompt() {
   return score;
  };
 
-let scoringAlgorithms = [
+const scoringAlgorithms = [
    {
       name: "simpleScorer",
-      description: 'Each letter is worth 1 point.',
+      description: "Each letter is worth 1 point",
       scoringFunction: simpleScorer
     },
     {
-      name: 'Vowel Bonus',
-      description: '1 - Vowel Bonus: Vowels are worth 3 points',
+      name: "Vowel Bonus",
+      description: "1 - Vowel Bonus: Vowels are worth 3 points",
       scoringFunction: vowelBonusScorer
     },
     {
-      name: 'Scrabble Scorer',
-      description: '2 - Scrabble: Uses scrabble point system',
-      scoringFunction: oldScrabbleScorer
+      name: "Scrabble Scorer",
+      description: "2 - Scrabble: Uses scrabble point system",
+      scoringFunction: scrabbleScorer
     }
 ];
 
@@ -97,10 +97,10 @@ let scoringAlgorithms = [
 
  transform = (oldPointStructure) => {
  const newPointStructure = {};
- for (key in oldPointStructure){
-   keyArray = oldPointStructure[key];
-   for(i=0; i<keyArray.length;i++) {
-      newPointStructure[keyArray[i].toUpperCase()] = Number(key);
+ for (letter in oldPointStructure){
+   letterArray = oldPointStructure[letter];
+   for(i=0; i<letterArray.length;i++) {
+      newPointStructure[letterArray[i].toUpperCase()] = Number(letter);
    }
  }
  return newPointStructure;
