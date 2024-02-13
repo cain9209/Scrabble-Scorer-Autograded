@@ -66,7 +66,7 @@ function initialPrompt() {
      .map(letter => newPointStructure[letter.toLowerCase()])
      .reduce((a, b) => a + b);
  };
- 
+// code complete//
 const scoringAlgorithms = [
    {
       name: "simpleScorer",
