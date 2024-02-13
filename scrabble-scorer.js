@@ -34,11 +34,12 @@ function oldScrabbleScorer(word) {
 
 function initialPrompt() {
    console.log("Let's play some scrabble! Enter a word:");
-    userInput = input.question("Enter a word to score!:");
+   let userInput = input.question("Enter a word to score!:");
+   return userInput;
 
 };
 
-   simpleScorer = (word) => {
+  let simpleScorer = (word) => {
    let score = 0
    word = word.toLowerCase();
    for (let i = 0; i < word.length; i++) { 
@@ -47,7 +48,7 @@ function initialPrompt() {
    return score;
 };
 
-   vowelBonusScorer = (word) => {
+   let vowelBonusScorer = (word) => {
    const vowels = ["a", "e", "i", "o", "u"];
    score = 0;
    word = word.toLowerCase();
@@ -56,7 +57,7 @@ function initialPrompt() {
    }
    return score;    
  };
- const scrabbleScorer = word =>
+  let scrabbleScorer = word =>
  word
    .split('')
    .map(letter => newPointStructure[letter])
@@ -80,25 +81,23 @@ const scoringAlgorithms = [
     }
 ];
 
-   scorerPrompt = () => {
-   console.log("Which Scoreing Algorythem would you like to use?:\n");
+function scorerPrompt() {
+   console.log("Which Scoring Algorithm would you like to use?:\n");
    for (let i = 0; i < scoringAlgorithms.length; i++) {
-      console.log(`${scoringAlgorithms[i].description}`);
+      console.log(`${i} - ${scoringAlgorithms[i].description}`);
    }
-   const userSelection = input.question("Enter 0, 1, or 2: "); // need to push input to array//
-   const selectionArray = [];
-   selectionArray.push(userSelection);
-   console.log(`You have selected ${selectionArray}`);
+   const userSelection = input.question("Enter 0, 1, or 2: ");
+   console.log(`You have selected ${userSelection}`);
 
-   return scoringAlgorithms[userSelection]; // Return the selected scoring algorithm
+   return scoringAlgorithms[userSelection];
 }
 
  transform = (oldPointStructure) => {
  const newPointStructure = {};
- for (letter in oldPointStructure){
-   letterArray = oldPointStructure[letter];
-   for(i=0; i<letterArray.length;i++) {
-      newPointStructure[letterArray[i].toLowerCase()] = Number(letter);
+ for (let letter in oldPointStructure){
+  let letterArray = oldPointStructure[letter];
+   for(let i=0; i<letterArray.length;i++) {
+      newPointStructure[letterArray[i]] = Number(letter);
    }
  }
  return newPointStructure;
@@ -106,8 +105,10 @@ const scoringAlgorithms = [
 let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
-   initialPrompt();
-   scorerPrompt();
+   const word = initialPrompt();
+   const selectedScorer = scorerPrompt();
+   const score = selectedScorer.scorerFunction(word, newPointStructure);
+   console.log(`Score for '${word}': ${score}`);
 }
 runProgram();
 // Don't write any code below this line //
