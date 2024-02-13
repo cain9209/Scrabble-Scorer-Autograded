@@ -98,10 +98,10 @@ function scorerPrompt() {
 
  transform = (oldPointStructure) => {
  const newPointStructure = {};
- for (let letter in oldPointStructure){
-  let letterArray = oldPointStructure[letter];
+ for (let pointValue in oldPointStructure){
+  let letterArray = oldPointStructure[pointValue];
    for(let i=0; i<letterArray.length;i++) {
-      newPointStructure[letterArray[i]] = Number(letter);
+      newPointStructure[letterArray[i].toLowerCase()] = Number(pointValue);
    }
  }
  return newPointStructure;
