@@ -63,7 +63,7 @@ function initialPrompt() {
    return word
      .toUpperCase()
      .split('')
-     .map(letter => newPointStructure[letter])
+     .map(letter => newPointStructure[letter.toLowerCase()])
      .reduce((a, b) => a + b);
  };
  
