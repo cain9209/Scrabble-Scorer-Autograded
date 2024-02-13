@@ -50,19 +50,23 @@ function initialPrompt() {
 
    let vowelBonusScorer = (word) => {
    const vowels = ["a", "e", "i", "o", "u"];
-   score = 0;
+   let score = 0;
    word = word.toLowerCase();
    for (let i = 0; i < word.length; i++) {
       score += vowels.includes(word[i]) ? 3 : 1;
    }
    return score;    
  };
-  let scrabbleScorer = word =>
- word
-   .split('')
-   .map(letter => newPointStructure[letter])
-   .reduce((a, b) => a + b);
-
+ let scrabbleScorer = word => {
+   const newPointStructure = transform(oldPointStructure);
+ 
+   return word
+     .toUpperCase()
+     .split('')
+     .map(letter => newPointStructure[letter])
+     .reduce((a, b) => a + b);
+ };
+ 
 const scoringAlgorithms = [
    {
       name: "simpleScorer",
@@ -71,12 +75,12 @@ const scoringAlgorithms = [
     },
     {
       name: "Vowel Bonus",
-      description: "1 - Vowel Bonus: Vowels are worth 3 points",
+      description: "Vowel Bonus: Vowels are worth 3 points",
       scorerFunction: vowelBonusScorer
     },
     {
       name: "Scrabble Scorer",
-      description: "2 - Scrabble: Uses scrabble point system",
+      description: "Scrabble: Uses scrabble point system",
       scorerFunction: scrabbleScorer
     }
 ];
