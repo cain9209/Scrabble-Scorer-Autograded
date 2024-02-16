@@ -114,7 +114,6 @@ function runProgram() {
    const score = selectedScorer.scorerFunction(word, newPointStructure);
    console.log(`Score for '${word}': ${score}`);
 }
-runProgram();
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
 module.exports = {
